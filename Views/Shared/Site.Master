@@ -1,0 +1,172 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    <link href="<%: Url.Content("~/favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="~/Content/Navigation.css" type="text/css" rel="stylesheet" media="screen" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function () {
+            $(".box .h_title").not(this).next("ul").hide("normal");
+            $(".box .h_title").not(this).next("#home").show("normal");
+            $(".box").children(".h_title").click(function () { $(this).next("ul").slideToggle(); });
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="wrap">
+        <div id="header">
+            <div id="top">
+                <div class="left">
+                    <%: Html.Partial("_LoginPartial") %>
+                </div>
+                <div class="right">
+                    <div class="align-right">
+                    </div>
+                </div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li class="upp"><a href="#">Dashboard</a>
+                        <ul>
+                            <li>&#8250; <a href="#">Visit site</a></li>
+                            <li>&#8250; <%: @Html.ActionLink("Dashboard", "Index", "Dashboard")%></li>
+                            <li>&#8250; <%: @Html.ActionLink("Add New Page", "Create", "Page")%></li>
+                        </ul>
+                    </li>
+                    <li class="upp"><a href="#">Pages</a>
+                        <ul>
+                            <li>&#8250; <%: @Html.ActionLink("Show all Pages", "Index", "Page")%></li>
+                            <li>&#8250; <%: @Html.ActionLink("Add New Page", "Create", "Page")%></li>
+              
+                        </ul>
+                    </li>
+                    <li class="upp"><a href="#">Categories</a>
+                        <ul>
+                            <li>&#8250; <%: @Html.ActionLink("Show all Categories", "Index", "Category")%></li>
+                            <li>&#8250; <%: @Html.ActionLink("Add New Category", "Create", "Category")%></li>
+              
+                        </ul>
+                    </li>
+                    <li class="upp"><a href="#">Products</a>
+                        <ul>
+                            <li>&#8250; <%: @Html.ActionLink("Show all Products", "Index", "Product")%></li>
+                            <li>&#8250; <%: @Html.ActionLink("Add New Product", "Create", "Product")%></li>
+                            <li>&#8250; <%: @Html.ActionLink("Product Images", "Index", "ProductImage")%></li>
+                            <li>&#8250; <%: @Html.ActionLink("Create Product Image", "Create", "ProductImage")%></li>
+                        </ul>
+                    </li>
+                    <li class="upp"><a href="#">Products Attributes</a>
+                        
+                        <ul>
+                            <li>&#8250; <%: @Html.ActionLink("Attribute", "Index", "Attribute")%></li>
+                            <li>&#8250; <%: @Html.ActionLink("Attribute Values", "Index", "AttributeValues")%></li>
+                        </ul>
+                    </li>
+                    <li class="upp"><a href="#">Inventory</a>
+                        <ul>
+                            <li>&#8250; <%: @Html.ActionLink("Show all Inventory", "Index", "Inventory")%></li>
+                            <li>&#8250; <%: @Html.ActionLink("Add New Inventory", "Create", "Inventory")%></li>
+                        </ul>
+                    </li>
+                    <li class="upp"><a href="#">Orders</a>
+                        <ul>
+                            <li>&#8250; <%: @Html.ActionLink("Show all Orders", "Index", "Order")%></li>
+                        </ul>
+                    </li>
+                    <li class="upp"><a href="#">Users</a>
+                        <ul>
+                            <li>&#8250; <%: @Html.ActionLink("Show all Customers", "Index", "Customer")%></li>
+                            <li>&#8250; <%: @Html.ActionLink("Add New Customer", "Create", "Customer")%></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            <div id="sidebar">
+                <div class="box">
+                    <div class="h_title">&#8250; Dashboard</div>
+                    <ul id="home">
+                        <li class="b1"><a class="icon view_page" href="#">Visit site</a></li>
+                        <li class="b1"><%: @Html.ActionLink("Dashboard", "Index", "Dashboard", null, new {@class="icon view_page"})%></li>
+                        <li class="b1"><%: @Html.ActionLink("Add New Page", "Create", "Page", null, new {@class="icon add_page"})%></li>
+                        
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <div class="h_title">&#8250; Pages</div>
+                    <ul>
+                        <li class="b1"><%: @Html.ActionLink("Show all pages", "Index", "Page", null, new {@class="icon page"})%></li>
+                        <li class="b2"><%: @Html.ActionLink("Add New Page", "Create", "Page", null, new {@class="icon add_page"})%></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <div class="h_title">&#8250; Categories</div>
+                    <ul>
+                        <li class="b1"><%: @Html.ActionLink("Show all Categories", "Index", "Category", null, new {@class="icon page"})%></li>
+                        <li class="b2"><%: @Html.ActionLink("Add New Category", "Create", "Category", null, new {@class="icon add_page"})%></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <div class="h_title">&#8250; Products</div>
+                    <ul>
+                        <li class="b1"><%: @Html.ActionLink("Show all Products", "Index", "Product", null, new {@class="icon page"})%></li>
+                        <li class="b2"><%: @Html.ActionLink("Add New Product", "Create", "Product", null, new {@class="icon add_page"})%></li>
+                        <li class="b1"><%: @Html.ActionLink("Show all Product Images", "Index", "ProductImage", null, new {@class="icon page"})%></li>
+                        <li class="b2"><%: @Html.ActionLink("Create New Product Image", "Create", "ProductImage", null, new {@class="icon add_page"})%></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <div class="h_title">&#8250; Products Attributes</div>
+                    <ul>
+                        <li class="b1"><%: @Html.ActionLink("Show all Product Attribute", "Index", "Attribute", null, new {@class="icon page"})%></li>
+                        <li class="b1"><%: @Html.ActionLink("Create Product Attribute", "Create", "Attribute", null, new {@class="icon add_page"})%></li>
+                        <li class="b2"><%: @Html.ActionLink("Show all Attribute Values", "Index", "AttributeValues", null, new {@class="icon page"})%></li>
+                        <li class="b2"><%: @Html.ActionLink("Create Attribute Values", "Create", "AttributeValues", null, new {@class="icon add_page"})%></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <div class="h_title">&#8250; Inventory</div>
+                    <ul>
+                        <li class="b1"><%: @Html.ActionLink("Show all Inventory", "Index", "Inventory", null, new {@class="icon page"})%></li>
+                        <li class="b2"><%: @Html.ActionLink("Add New Inventory", "Create", "Inventory", null, new {@class="icon add_page"})%></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <div class="h_title">&#8250; Users</div>
+                    <ul>
+                        <li class="b1"><%: @Html.ActionLink("Show all Customers", "Index", "Customer", null, new {@class="icon page"})%></li>
+                        <li class="b2"><%: @Html.ActionLink("Add New Customer", "Create", "Customer", null, new {@class="icon add_page"})%></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="main">
+                <asp:ContentPlaceHolder ID="FeaturedContent" runat="server" />
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="left">
+                <p>&copy; 2013 Administrator Panel</p>
+            </div>
+
+        </div>
+        <%: Scripts.Render("~/bundles/jquery") %>
+        <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
+    </div>
+</body>
+</html>
